@@ -33,25 +33,29 @@ order by name;
 create or replace view view_absence as 
 select 
   result.id as id, 
+  result.staff_id,
   staff_name, 
   date, 
   reason, 
   staff.name as approver_name, 
   result.status, 
   department_name, 
-  result.department_id 
+  result.department_id,
+  result.note
 from 
   staff 
   right join(
     select 
       absence.id as id, 
-      staff.name as staff_name, 
+      staff.name as staff_name,
+	  staff_id,
       date, 
       reason, 
       absence.status, 
       approver_id, 
       department.name as department_name, 
-      department_id 
+      department_id,
+      note
     from 
       staff, 
       absence, 
@@ -82,7 +86,7 @@ order by date desc;
 --View thông tin ca trực
 create or replace view view_shift as
 select shift.id,staff.name as staff_name,staff_id,department.name as department_name,
-building,location,date,description, shift,area_id
+building,location,date,description, shift,area_id,department.id as department_id
 from shift, area, staff, department,job_position
 where staff_id=staff.id and area_id = area.id and department_id=department.id
 and job_position.id = position_id
@@ -166,16 +170,10 @@ where receipt.id = receipt_id
 order by receipt_id desc;
 
 -- view nhân viên ca trực
-create or replace view view_shift_staff as
-select id, name
-from staff
-where position_id in (
-select id
-from job_position
-where department_id in(
-select id
-from department 
-where name in ('Bộ phận vệ sinh','Bộ phận an ninh')));
+create or replace  view view_shift_staff as
+select staff.id,staff.name,department_id
+from staff,job_position,department
+where position_id = job_position.id and department_id = department.id;
 
 -- view nhân viên kỹ thuật
 create or replace view view_technique_staff as
@@ -253,3 +251,12 @@ select
 	account.username as account_name
 from apartment
 left join account on account.id = apartment.account_id;
+
+-- view manager
+create or replace view view_manager as
+select *
+from staff
+where position_id in (select id from job_position
+					 where department_id = (select id 
+										   from department
+										   where name='Điều hành ban quản lý'));

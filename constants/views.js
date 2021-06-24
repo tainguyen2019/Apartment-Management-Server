@@ -7,6 +7,7 @@ const VIEW_NAMES = {
   arrange: 'view_device_arrange',
   deviceArrange: 'view_device_arrange',
   event: 'view_event',
+  manager: 'view_manager',
   maintenance: 'view_maintenance',
   notification: 'view_notification',
   reflect: 'view_reflect',

@@ -24,5 +24,10 @@ router.post(
   createAccessRightsMiddleware('APPROVE_ABSENCE'),
   absenceController.approve,
 );
+router.post(
+  '/:id/reject',
+  createAccessRightsMiddleware('APPROVE_ABSENCE'),
+  absenceController.reject,
+);
 
 module.exports = router;

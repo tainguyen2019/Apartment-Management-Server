@@ -12,6 +12,10 @@ const search = async (req, res, next) => {
     if (req.apartment_id) {
       searchParams.apartment_id = req.apartment_id;
     }
+
+    if (req.department_id) {
+      searchParams.department_id = req.department_id;
+    }
     const totalRecords = await reflectModel.count(searchParams);
     const offset = (page - 1) * pageSize;
     const { rows: reflects } = await reflectModel.search(

@@ -11,6 +11,7 @@ role.apartment,notification,1,0,0,0,0
 role.apartment,reflect_info,1,1,1,0,0
 role.apartment,repair_info,1,1,1,0,0
 role.apartment,vehicle_parking_registration,1,1,1,0,0
+role.apartment,fee,1,0,0,0,0
 role.receptionist,vehicle_parking_registration,1,0,0,0,1
 role.receptionist,event,1,0,0,0,1
 role.receptionist,apartment,1,0,0,0,0
@@ -47,7 +48,7 @@ role.security_head,absence,1,1,1,0,0
 role.security_staff,shift,1,0,0,0,0
 role.security_staff,staff,1,0,0,0,0
 role.security_staff,absence,1,1,1,0,0
-role.management,absence,1,0,0,0,1
+role.management,absence,1,1,1,1,1
 role.management,account,1,1,1,1,1
 role.management,apartment,1,1,1,1,1
 role.management,area,1,1,1,1,1

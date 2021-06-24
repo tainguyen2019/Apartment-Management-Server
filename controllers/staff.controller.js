@@ -69,7 +69,7 @@ const update = async (req, res, next) => {
 
 const getShiftStaff = async (req, res, next) => {
   try {
-    const { rows: staffs } = await staffModel.getShiftStaff();
+    const { rows: staffs } = await staffModel.getShiftStaff(req.department_id);
 
     res.json({
       message: 'Yêu cầu thực hiện thành công.',
@@ -83,7 +83,7 @@ const getShiftStaff = async (req, res, next) => {
   }
 };
 
-const getTechniqueStaff = async (req, res, next) => {
+const getTechniqueStaff = async (_req, res, next) => {
   try {
     const { rows: staffs } = await staffModel.getTechniqueStaff();
 

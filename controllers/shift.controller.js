@@ -1,10 +1,19 @@
 const CustomError = require('../constants/CustomError');
+const positionModel = require('../models/position.model');
 const shiftModel = require('../models/shift.model');
 const logger = require('../utils/logger');
 
 const search = async (req, res, next) => {
   try {
     const { pageSize = 10, page = 1, ...queryParams } = req.query;
+
+    if (req.department_id) {
+      const isManager = await positionModel.isManager(req.staff_id);
+      if (!isManager) {
+        queryParams.department_id = req.department_id;
+      }
+    }
+
     const totalRecords = await shiftModel.count(queryParams);
     const offset = (page - 1) * pageSize;
     const { rows: shifts } = await shiftModel.search(

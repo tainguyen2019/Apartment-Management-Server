@@ -53,6 +53,21 @@ class Absence {
       status: 'Đã phê duyệt',
     });
   }
+
+  reject(id, values) {
+    return this.update(id, {
+      approver_id: values.approver_id,
+      note: values.note,
+      status: 'Bi từ chối',
+    });
+  }
+
+  async isDuplicate(staffID, date) {
+    const whereParams = generateWhereParams({ date, staff_id: staffID });
+    const { rows } = await dbService.search(this.tableName, '*', whereParams);
+
+    return rows.length > 0;
+  }
 }
 
 const absenceModel = new Absence();

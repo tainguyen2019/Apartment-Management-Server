@@ -30,6 +30,7 @@ const auth = (req, res, next) => {
     req.privileges = data.privileges;
     req.staff_id = data.staff_id;
     req.apartment_id = data.apartment_id;
+    req.department_id = data.department_id;
     next();
   });
 };

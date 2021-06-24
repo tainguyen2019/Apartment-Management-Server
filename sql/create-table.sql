@@ -108,7 +108,7 @@ create table if not exists event(
 	end_time time,
 	status varchar(20),
 	approver_id uuid,
-	note varchar(50),
+	note text,
 	constraint pk_event_id primary key (id)
 );
 
@@ -201,6 +201,7 @@ create table if not exists absence(
 	date date,
 	reason text,
 	status varchar(20),
+	note text,
 	constraint pk_absence_id primary key (id)
 );
 
