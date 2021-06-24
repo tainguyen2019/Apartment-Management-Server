@@ -1,0 +1,28 @@
+const TABLE_NAMES = {
+  absence: 'absence',
+  account: 'account',
+  area: 'area',
+  arrange: 'device_arrange',
+  apartment: 'apartment',
+  department: 'department',
+  device: 'device',
+  event: 'event',
+  fee: 'fee',
+  maintenance: 'maintenance',
+  notification: 'notification',
+  position: 'job_position',
+  privilege: 'privilege',
+  payslip: 'payslip',
+  reflect: 'reflect_info',
+  receipt: 'receipt',
+  receiptDetail: 'receipt_detail',
+  repair: 'repair_info',
+  role: 'role',
+  rolePrivilege: 'role_privilege',
+  staff: 'staff',
+  shift: 'shift',
+  vehicle: 'vehicle_parking_registration',
+  water_index: 'water_index',
+};
+
+module.exports = TABLE_NAMES;

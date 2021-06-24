@@ -1,3 +1,1 @@
-# Apartment Management Server
-
-Apartment Management Server
+# my apartment server

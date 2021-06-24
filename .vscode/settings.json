@@ -1,0 +1,11 @@
+{
+  "editor.formatOnSave": false,
+  "editor.rulers": [0, 80],
+  "eslint.validate": ["javascript"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "prettier.useTabs": false,
+  "editor.tabSize": 2,
+  "files.eol": "\n"
+}

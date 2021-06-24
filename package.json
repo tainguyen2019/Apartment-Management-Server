@@ -1,0 +1,59 @@
+{
+  "name": "my-apartment-server",
+  "version": "1.0.0",
+  "description": "My apartment server",
+  "main": "bin/www",
+  "scripts": {
+    "start": "nodemon bin/www",
+    "lint:fix": "yarn lint --fix",
+    "lint": "eslint **/*.js",
+    "grant-access": "node scripts/grant_access_rights",
+    "build:sql": "node scripts/bundle_sql_script"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=11.0.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dayjs": "^1.10.5",
+    "debug": "^4.3.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "fast-csv": "^4.3.6",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.7",
+    "pg": "^8.6.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.23.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "husky": "4.2.5",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.0"
+  },
+  "lint-staged": {
+    "*.{js}": [
+      "yarn lint:fix"
+    ],
+    "{*.{json,md}}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}

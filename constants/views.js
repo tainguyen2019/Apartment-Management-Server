@@ -1,0 +1,26 @@
+const VIEW_NAMES = {
+  account: 'view_account',
+  availableAccount: 'view_available_account',
+  absence: 'view_absence',
+  apartment: 'view_apartment',
+  area: 'view_area',
+  arrange: 'view_device_arrange',
+  deviceArrange: 'view_device_arrange',
+  event: 'view_event',
+  maintenance: 'view_maintenance',
+  notification: 'view_notification',
+  reflect: 'view_reflect',
+  repair: 'view_repair',
+  receipt: 'view_receipt',
+  receiptDetail: 'view_receipt_detail',
+  payslip: 'view_payslip',
+  rolePrivilege: 'view_role_privilege',
+  shift: 'view_shift',
+  staff: 'view_staff',
+  shiftStaff: 'view_shift_staff',
+  techniqueStaff: 'view_technique_staff',
+  vehicle: 'view_vehicle',
+  water_index: 'view_water_index',
+};
+
+module.exports = VIEW_NAMES;
