@@ -53,9 +53,10 @@ class Event {
     });
   }
 
-  cancel(id, note) {
+  cancel(id, note, approver) {
     return this.update(id, {
       note,
+      approver_id: approver,
       status: 'Đã hủy',
     });
   }

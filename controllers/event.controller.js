@@ -104,7 +104,7 @@ const cancel = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { note } = req.body;
-    const { rowCount } = await eventModel.cancel(id, note);
+    const { rowCount } = await eventModel.cancel(id, note, req.staff_id);
 
     res.json({
       message: 'Thao tác thành công.',

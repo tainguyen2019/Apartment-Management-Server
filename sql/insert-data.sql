@@ -180,8 +180,8 @@ values
 -- Dữ liệu tài khoản
 insert into account(type,id, username,password,role_id)
 values
-('internal','b43f93f5-a524-46a7-b076-e5dbf7231520','admin1','$2b$10$WyBC5F5qo93jbxoa.e2mXu6KJMkBZeIxCMKzR7O75EexRQZPYL0Ua','61855fa5-512a-472b-bdb9-f46d89e6730d'),
-('internal','f054fd45-67e6-452e-96c0-163bdc41484b','admin2','$2b$10$WyBC5F5qo93jbxoa.e2mXu6KJMkBZeIxCMKzR7O75EexRQZPYL0Ua','61855fa5-512a-472b-bdb9-f46d89e6730d'),
+('internal','b43f93f5-a524-46a7-b076-e5dbf7231520','truongbql','$2b$10$WyBC5F5qo93jbxoa.e2mXu6KJMkBZeIxCMKzR7O75EexRQZPYL0Ua','61855fa5-512a-472b-bdb9-f46d89e6730d'),
+('internal','f054fd45-67e6-452e-96c0-163bdc41484b','phobql','$2b$10$WyBC5F5qo93jbxoa.e2mXu6KJMkBZeIxCMKzR7O75EexRQZPYL0Ua','61855fa5-512a-472b-bdb9-f46d89e6730d'),
 ('internal','5c7066df-99b4-47d1-bf1e-fa502896683c','ttkythuat','$2b$10$WyBC5F5qo93jbxoa.e2mXu6KJMkBZeIxCMKzR7O75EexRQZPYL0Ua','00554178-1d6c-4993-8a00-1e973da03ad1'),
 ('internal','47a7429d-32b4-4a56-a139-1793a2172242','kythuat1','$2b$10$WyBC5F5qo93jbxoa.e2mXu6KJMkBZeIxCMKzR7O75EexRQZPYL0Ua','2383011a-6fa1-4d8b-b8e9-3f8c1ecb491b'),
 ('internal','e5ea3ee4-d14f-4fbc-908e-730407c46366','kythuat2','$2b$10$WyBC5F5qo93jbxoa.e2mXu6KJMkBZeIxCMKzR7O75EexRQZPYL0Ua','2383011a-6fa1-4d8b-b8e9-3f8c1ecb491b'),
