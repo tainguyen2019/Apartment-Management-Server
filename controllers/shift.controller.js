@@ -1,7 +1,7 @@
-const CustomError = require('../constants/CustomError');
 const positionModel = require('../models/position.model');
 const shiftModel = require('../models/shift.model');
 const logger = require('../utils/logger');
+const { failChange } = require('../constants/errors');
 
 const search = async (req, res, next) => {
   try {
@@ -49,7 +49,7 @@ const create = async (req, res, next) => {
     });
   } catch (err) {
     logger.error(err);
-    next(new CustomError('Thông tin chưa lưu lại. Vui lòng thử lại.', 400));
+    next(err);
   }
 };
 
@@ -67,7 +67,7 @@ const update = async (req, res, next) => {
     });
   } catch (err) {
     logger.error(err);
-    next(new CustomError('Thay đổi thất bại. Vui lòng thử lại.', 400));
+    next(failChange);
   }
 };
 

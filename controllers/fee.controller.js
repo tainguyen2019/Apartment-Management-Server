@@ -1,5 +1,6 @@
 const CustomError = require('../constants/CustomError');
 const feeModel = require('../models/fee.model');
+const { failChange } = require('../constants/errors');
 
 const getFees = async (_req, res, next) => {
   try {
@@ -43,7 +44,7 @@ const update = async (req, res, next) => {
       },
     });
   } catch (e) {
-    next(new CustomError('Thay đổi thất bại. Vui lòng thử lại.', 400));
+    next(failChange);
   }
 };
 

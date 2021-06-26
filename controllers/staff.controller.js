@@ -1,6 +1,7 @@
 const CustomError = require('../constants/CustomError');
 const staffModel = require('../models/staff.model');
 const logger = require('../utils/logger');
+const { failChange } = require('../constants/errors');
 
 const search = async (req, res, next) => {
   try {
@@ -63,7 +64,7 @@ const update = async (req, res, next) => {
     });
   } catch (err) {
     logger.error(err);
-    next(new CustomError('Thay đổi thất bại. Vui lòng thử lại.', 400));
+    next(failChange);
   }
 };
 

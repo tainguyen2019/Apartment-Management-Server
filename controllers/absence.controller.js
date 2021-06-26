@@ -118,7 +118,7 @@ const reject = async (req, res, next) => {
     });
   } catch (err) {
     logger.error(err);
-    next(new CustomError('Duyệt thất bại. Vui lòng thử lại.', 400));
+    next(err);
   }
 };
 

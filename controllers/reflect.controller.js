@@ -54,7 +54,7 @@ const create = async (req, res, next) => {
     });
   } catch (err) {
     logger.error(err);
-    next(new CustomError('Có lỗi xảy ra. Vui lòng thử lại.', 400));
+    next(err);
   }
 };
 
@@ -72,7 +72,7 @@ const update = async (req, res, next) => {
     });
   } catch (err) {
     logger.error(err);
-    next(new CustomError('Thay đổi thất bại. Vui lòng thử lại!', 400));
+    next(err);
   }
 };
 
@@ -95,7 +95,7 @@ const answer = async (req, res, next) => {
     });
   } catch (err) {
     logger.error(err);
-    next(new CustomError('Có lôi xảy ra. Vui lòng thử lại!', 400));
+    next(err);
   }
 };
 

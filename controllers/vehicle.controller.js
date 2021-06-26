@@ -45,7 +45,7 @@ const create = async (req, res, next) => {
       message: 'Đăng ký thành công. Chờ phê duyệt',
     });
   } catch (err) {
-    next(new CustomError('Đăng ký thất bại. Vui lòng thử lại', 400));
+    next(err);
   }
 };
 
@@ -67,7 +67,7 @@ const update = async (req, res, next) => {
       },
     });
   } catch (err) {
-    next(new CustomError('Thay đổi thất bại. Vui lòng thử lại', 400));
+    next(err);
   }
 };
 

@@ -1,13 +1,10 @@
 const jwt = require('jsonwebtoken');
 const { unauthorizedError } = require('../constants/errors');
 const accountModel = require('../models/account.model');
-const staffModel = require('../models/staff.model');
-const departmentModel = require('../models/department.model');
-const apartmentModel = require('../models/apartment.model');
-const rolePrivilegeModel = require('../models/role_privilege.model');
 const logger = require('../utils/logger');
 const encryption = require('../utils/encryption');
 const CustomError = require('../constants/CustomError');
+const { getAccountAccessRights } = require('../utils/auth');
 
 const secretKey = process.env.SECRET_KEY;
 const expiresIn = process.env.EXPIRES_IN;
@@ -29,35 +26,16 @@ const login = async (req, res, next) => {
       return next(unauthorizedError);
     }
 
-    const userPrivileges = await rolePrivilegeModel.getByRoleId(
-      account.role_id,
-    );
-
-    const userPrivilegeCodes = userPrivileges.map(
-      (item) => item.privilege_code,
-    );
-
-    let staffId = '';
-    let apartmentId = '';
-    let departmentId = '';
-
-    if (account.type === 'internal') {
-      const staff = await staffModel.getStaffByAccount(account.id);
-      staffId = staff.id;
-      const department = await departmentModel.getDepartment(staffId);
-      departmentId = department.id;
-    } else {
-      const apartment = await apartmentModel.getApartmentByAccount(account.id);
-      apartmentId = apartment.id;
-    }
+    const accessRights = await getAccountAccessRights({
+      account_id: account.id,
+      role_id: account.role_id,
+      type: account.type,
+    });
 
     const data = {
+      ...accessRights,
       account,
       role: account.role_id,
-      privileges: userPrivilegeCodes,
-      staff_id: staffId,
-      apartment_id: apartmentId,
-      department_id: departmentId,
     };
 
     jwt.sign(data, secretKey, { expiresIn }, (err, token) => {
@@ -68,9 +46,9 @@ const login = async (req, res, next) => {
         data: {
           token,
           account,
-          staff_id: staffId,
-          apartment_id: apartmentId,
-          department_id: departmentId,
+          staff_id: accessRights.staff_id,
+          apartment_id: accessRights.apartment_id,
+          department_id: accessRights.department_id,
         },
       });
     });

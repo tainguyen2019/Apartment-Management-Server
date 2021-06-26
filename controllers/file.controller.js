@@ -2,28 +2,6 @@ const fs = require('fs');
 const path = require('path');
 
 const CustomError = require('../constants/CustomError');
-const dbService = require('../services/db.service');
-const logger = require('../utils/logger');
-
-const fileUploader = async (req, res) => {
-  if (!req.file) {
-    throw new CustomError('Missing file.', 400);
-  }
-
-  // file passed from multer
-  const { originalname } = req.file;
-
-  // field value from form data
-  const { title } = req.body;
-
-  const result = await dbService.insertInto('test-table', { name: title });
-
-  logger.log(result.rows);
-
-  res.json({
-    message: `Upload file "${originalname}" successfully with title "${title}"`,
-  });
-};
 
 const downloadFile = (req, res, next) => {
   try {
@@ -40,4 +18,4 @@ const downloadFile = (req, res, next) => {
   }
 };
 
-module.exports = { fileUploader, downloadFile };
+module.exports = { downloadFile };

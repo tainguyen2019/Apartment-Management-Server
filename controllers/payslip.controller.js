@@ -1,6 +1,6 @@
-const CustomError = require('../constants/CustomError');
 const payslipModel = require('../models/payslip.model');
 const logger = require('../utils/logger');
+const { failChange } = require('../constants/errors');
 
 const search = async (req, res, next) => {
   try {
@@ -42,7 +42,7 @@ const create = async (req, res, next) => {
     });
   } catch (err) {
     logger.error(err);
-    next(new CustomError('Có lỗi xảy ra. Vui lòng thử lại.', 400));
+    next(err);
   }
 };
 
@@ -60,7 +60,7 @@ const update = async (req, res, next) => {
     });
   } catch (err) {
     logger.error(err);
-    next(new CustomError('Thay đổi thất bại. Vui lòng thử lại.', 400));
+    next(failChange);
   }
 };
 
