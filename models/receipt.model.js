@@ -65,24 +65,39 @@ class Receipt {
   }
 
   async prepareDetailReceipt(apartmentID, staffID, year, month) {
+    let preMonth = month;
+    let preYear = year;
+
+    if (preMonth === 12) {
+      preMonth = 1;
+      preYear = preYear - 1;
+    } else {
+      preMonth = preMonth - 1;
+    }
+
     const queryParams = [
+      // MANAGE_FEE
       apartmentID,
-      apartmentID,
-      year,
-      month,
-      year,
-      month,
+      // MOTO_PARKING_FEE
       apartmentID,
       year,
       month,
       year,
       month,
+      // CAR_PARKING_FEE
       apartmentID,
       year,
       month,
-      apartmentID,
       year,
       month,
+      // EVENT_FEE
+      apartmentID,
+      preYear,
+      preMonth,
+      // WATER_FEE
+      apartmentID,
+      preYear,
+      preMonth,
     ];
 
     const { rows: details } = await dbService.query(

@@ -44,6 +44,7 @@ const create = async (req, res, next) => {
     const { rows } = await receiptModel.create({
       ...receipt,
       status: 'Chưa thanh toán',
+      type: 'manual',
     });
 
     const { id } = rows[0];
@@ -120,10 +121,7 @@ const generate = async (req, res, next) => {
     );
 
     const { rows: receipts } = await receiptModel.create(receipt);
-    const { rowCount } = await receiptModel.createDetail(
-      receipts[0].id,
-      details,
-    );
+    await receiptModel.createDetail(receipts[0].id, details);
 
     res.json({
       message: 'Yêu cầu thực hiện thành công.',

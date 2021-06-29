@@ -179,7 +179,6 @@ create table if not exists payslip(
 	date date not null default CURRENT_DATE,
 	content text,
 	total int,
-	status varchar(20),
 	constraint pk_payslip_id primary key (id)
 );
 

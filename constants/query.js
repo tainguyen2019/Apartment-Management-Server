@@ -7,9 +7,9 @@ from vehicle_parking_registration,fee
 where type='Xe máy' and code='MOTO_PARKING_FEE'
 and apartment_id=$2
 and ((status='Đang gửi'
-and extract(year from start_date) = $3 and extract(month from start_date) <= $4)
+and extract(year from start_date) = $3 and extract(month from start_date) < $4)
 or (status='Đã hủy'
-and extract(year from cancellation_date) = $5 and extract(month from cancellation_date) >= $6))
+and extract(year from cancellation_date) = $5 and extract(month from cancellation_date) > $6))
 group by name,amount
 union
 select fee.name as fee_name, count(*) as factor,amount as price
@@ -17,9 +17,9 @@ from vehicle_parking_registration,fee
 where type='Ô tô' and code='CAR_PARKING_FEE'
 and apartment_id=$7
 and ((status='Đang gửi'
-and extract(year from start_date) = $8 and extract(month from start_date) <= $9)
+and extract(year from start_date) = $8 and extract(month from start_date) < $9)
 or (status='Đã hủy'
-and extract(year from cancellation_date) = $10 and extract(month from cancellation_date) >= $11))
+and extract(year from cancellation_date) = $10 and extract(month from cancellation_date) > $11))
 group by name,amount
 union
 select fee.name as fee_name, count(*) as factor,amount as price
