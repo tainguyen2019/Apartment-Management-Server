@@ -1164,13 +1164,13 @@ values
 ('a2d03424-86b5-4126-8211-aedf4cafb344','Phí tổ chức sự kiện',200000,1);
 
 --Dữ liệu phiếu chi
-insert into payslip(id,staff_id,date,content,total,status)
+insert into payslip(id,staff_id,date,content,total)
 values
-('40f177c2-c335-44d7-803a-e5f0bb43dcf6','36da7f77-a614-4fc3-9ba0-3cd016552eed','05/05/2021','Mua bóng đèn',500000,'Đã lưu'),
-('61a50a43-f17f-411f-b5b0-103d407f44b4','36da7f77-a614-4fc3-9ba0-3cd016552eed','12/05/2021','Mua văn phòng phẩm',1200000,'Đã lưu'),
-('d8f36c23-6f05-41e2-b333-ce78bf38361f','36da7f77-a614-4fc3-9ba0-3cd016552eed','28/05/2021','Tổ chức tiệc vui chơi cho nhân viên',5000000,'Đã lưu'),
-('f163a8dd-6c4b-4e2a-931b-ef35628ee63b','36da7f77-a614-4fc3-9ba0-3cd016552eed','30/03/2021','Mua thiết bị PCCC',12400000,'Đã lưu'),
-('b5fa7d16-26c9-498f-a246-ff4a19b7044e','36da7f77-a614-4fc3-9ba0-3cd016552eed','10/05/2021','Mua đồ trang trí sảnh',1250000,'Đã lưu');
+('40f177c2-c335-44d7-803a-e5f0bb43dcf6','36da7f77-a614-4fc3-9ba0-3cd016552eed','05/05/2021','Mua bóng đèn',500000),
+('61a50a43-f17f-411f-b5b0-103d407f44b4','36da7f77-a614-4fc3-9ba0-3cd016552eed','12/05/2021','Mua văn phòng phẩm',1200000),
+('d8f36c23-6f05-41e2-b333-ce78bf38361f','36da7f77-a614-4fc3-9ba0-3cd016552eed','28/05/2021','Tổ chức tiệc vui chơi cho nhân viên',5000000),
+('f163a8dd-6c4b-4e2a-931b-ef35628ee63b','36da7f77-a614-4fc3-9ba0-3cd016552eed','30/03/2021','Mua thiết bị PCCC',12400000),
+('b5fa7d16-26c9-498f-a246-ff4a19b7044e','36da7f77-a614-4fc3-9ba0-3cd016552eed','10/05/2021','Mua đồ trang trí sảnh',1250000);
 
 --Dữ liệu thông báo
 insert into notification(staff_id,date,title,content,attachment,status)

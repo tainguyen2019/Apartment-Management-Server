@@ -54,8 +54,8 @@ create table if not exists fee(
 
 create table if not exists area(
 	id uuid default uuid_generate_v4(),
-	building varchar(5),
-	location varchar(20),
+	building varchar(20),
+	location varchar(50),
 	constraint pk_area_id primary key (id)
 );
 

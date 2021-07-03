@@ -122,7 +122,7 @@ where role_privilege.privilege_id = privilege.id;
 --View phiếu chi
 create or replace view view_payslip as
 select payslip.id,staff_id, date, content,
-total,payslip.status,name as staff_name
+total,name as staff_name
 from payslip, staff
 where staff_id = staff.id
 order by payslip.date desc;

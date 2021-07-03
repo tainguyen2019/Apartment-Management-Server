@@ -53,6 +53,12 @@ class Notification {
       date: new Date(),
     });
   }
+
+  unpublish(id) {
+    return this.update(id, {
+      status: 'Chưa đăng',
+    });
+  }
 }
 
 const notificationModel = new Notification();

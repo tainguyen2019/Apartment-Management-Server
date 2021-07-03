@@ -14,6 +14,14 @@ class Area {
 
     return areas;
   }
+
+  create(params) {
+    return dbService.insertInto(this.tableName, params);
+  }
+
+  update(params, id) {
+    return dbService.updateTable(this.tableName, params, id);
+  }
 }
 
 const areaModel = new Area();

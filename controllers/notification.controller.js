@@ -95,9 +95,27 @@ const publish = async (req, res, next) => {
   }
 };
 
+const unpublish = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { rowCount } = await notificationModel.unpublish(id);
+
+    res.json({
+      message: 'Thông báo đã được gỡ thành công.',
+      data: {
+        rowCount,
+      },
+    });
+  } catch (err) {
+    logger.error(err);
+    next(err);
+  }
+};
+
 module.exports = {
   search,
   create,
   update,
   publish,
+  unpublish,
 };

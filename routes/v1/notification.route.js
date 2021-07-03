@@ -28,5 +28,10 @@ router.put(
   createAccessRightsMiddleware('APPROVE_NOTIFICATION'),
   notificationController.publish,
 );
+router.put(
+  '/:id/unpublish',
+  createAccessRightsMiddleware('APPROVE_NOTIFICATION'),
+  notificationController.unpublish,
+);
 
 module.exports = router;
