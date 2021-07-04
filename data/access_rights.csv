@@ -22,7 +22,7 @@ role.accountant,receipt,1,1,1,1,1
 role.accountant,receipt_detail,1,1,1,1,1
 role.accountant,staff,1,0,0,0,0
 role.accountant,absence,1,1,1,0,0
-role.accountant,fee,1,0,0,0,0
+role.accountant,fee,1,1,1,0,0
 role.technician_head,maintenance,1,1,1,1,1
 role.technician_head,repair_info,1,0,1,0,1
 role.technician_head,device,1,1,1,1,1
