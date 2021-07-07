@@ -56,9 +56,16 @@ class Staff {
     );
   }
 
-  getShiftStaff(departmentID) {
-    const whereParams = generateWhereParams({ department_id: departmentID });
-    return dbService.search(VIEW_NAMES.shiftStaff, ['id', 'name'], whereParams);
+  getShiftStaff(departmentID = '') {
+    if (departmentID) {
+      const whereParams = generateWhereParams({ department_id: departmentID });
+      return dbService.search(
+        VIEW_NAMES.shiftStaff,
+        ['id', 'name'],
+        whereParams,
+      );
+    }
+    return dbService.search(VIEW_NAMES.shiftStaff, ['id', 'name']);
   }
 
   getTechniqueStaff() {

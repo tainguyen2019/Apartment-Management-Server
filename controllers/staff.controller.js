@@ -2,6 +2,7 @@ const CustomError = require('../constants/CustomError');
 const staffModel = require('../models/staff.model');
 const logger = require('../utils/logger');
 const { failChange } = require('../constants/errors');
+const positionModel = require('../models/position.model');
 
 const search = async (req, res, next) => {
   try {
@@ -70,7 +71,14 @@ const update = async (req, res, next) => {
 
 const getShiftStaff = async (req, res, next) => {
   try {
-    const { rows: staffs } = await staffModel.getShiftStaff(req.department_id);
+    let departmentId = '';
+    if (req.department_id) {
+      const isManager = await positionModel.isManager(req.staff_id);
+      if (!isManager) {
+        departmentId = req.department_id;
+      }
+    }
+    const { rows: staffs } = await staffModel.getShiftStaff(departmentId);
 
     res.json({
       message: 'Yêu cầu thực hiện thành công.',
