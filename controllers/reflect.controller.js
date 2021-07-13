@@ -1,4 +1,5 @@
 const CustomError = require('../constants/CustomError');
+const positionModel = require('../models/position.model');
 const reflectModel = require('../models/reflect.model');
 const logger = require('../utils/logger');
 
@@ -14,7 +15,10 @@ const search = async (req, res, next) => {
     }
 
     if (req.department_id) {
-      searchParams.department_id = req.department_id;
+      const isManager = await positionModel.isManager(req.staff_id);
+      if (!isManager) {
+        searchParams.department_id = req.department_id;
+      }
     }
     const totalRecords = await reflectModel.count(searchParams);
     const offset = (page - 1) * pageSize;
