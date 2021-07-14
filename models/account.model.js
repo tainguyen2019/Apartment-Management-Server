@@ -80,7 +80,7 @@ class Account {
 
   async getLoginAccount(username) {
     const selectedColumns = ['id', 'username', 'password', 'role_id', 'type'];
-    const params = customGenerateWhereParams({ username });
+    const params = generateWhereParams({ username });
     const { rows: accounts } = await dbService.search(
       this.tableName,
       selectedColumns,
