@@ -1,4 +1,4 @@
-const { Pool } = require('pg');
+const { Client } = require('pg');
 
 // Initiate dotenv for running scripts purpose
 const dotenv = require('dotenv');
@@ -19,26 +19,33 @@ dotenv.config();
 class DBService {
   constructor({ host, port, database, user, password, connectionString }) {
     if (connectionString) {
-      this.pool = new Pool({ connectionString, ssl: false });
+      this.config = { connectionString, ssl: false };
     } else {
-      this.pool = new Pool({
+      this.config = {
         host,
         port,
         database,
         user,
         password,
         dialect: 'postgres',
-      });
+      };
     }
   }
 
   async disconnect() {
-    await this.pool.end();
+    await this.client.end();
     logger.log('Close db connection');
   }
 
-  query(query, params) {
-    return this.pool.query(query, params);
+  async query(query, params) {
+    this.client = new Client(this.config);
+    await this.client.connect();
+
+    const result = await this.client.query(query, params);
+
+    await this.disconnect();
+
+    return result;
   }
 
   /**
@@ -125,7 +132,7 @@ class DBService {
     logger.log('update query\n', query);
     logger.log(`with params\n`, JSON.stringify(queryArgs, null, 2));
 
-    return this.pool.query(query, queryArgs);
+    return this.query(query, queryArgs);
   }
 
   /**
@@ -145,7 +152,7 @@ class DBService {
     logger.log('delete query\n', query);
     logger.log(`with params\n`, JSON.stringify(whereArgs, null, 2));
 
-    return this.pool.query(query, whereArgs);
+    return this.query(query, whereArgs);
   }
 
   /**
