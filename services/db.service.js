@@ -17,15 +17,19 @@ const {
 dotenv.config();
 
 class DBService {
-  constructor({ host, port, database, user, password }) {
-    this.pool = new Pool({
-      host,
-      port,
-      database,
-      user,
-      password,
-      dialect: 'postgres',
-    });
+  constructor({ host, port, database, user, password, connectionString }) {
+    if (connectionString) {
+      this.pool = new Pool({ connectionString });
+    } else {
+      this.pool = new Pool({
+        host,
+        port,
+        database,
+        user,
+        password,
+        dialect: 'postgres',
+      });
+    }
   }
 
   async disconnect() {
@@ -175,6 +179,7 @@ const {
   DATABASE_NAME,
   DATABASE_USER,
   DATABASE_PASSWORD,
+  DATABASE_URL,
 } = process.env;
 
 const dbService = new DBService({
@@ -183,6 +188,7 @@ const dbService = new DBService({
   database: DATABASE_NAME,
   user: DATABASE_USER,
   password: DATABASE_PASSWORD,
+  connectionString: DATABASE_URL,
 });
 
 module.exports = dbService;

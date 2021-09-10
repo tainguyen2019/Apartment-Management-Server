@@ -473,7 +473,8 @@ values
 ('887a83b4-9393-4e86-a035-f53316276ba8','7b881fc9-3bc7-44ec-b2ea-3f390da66899','Tiệc ăn mừng','10/04/2021','14:30','16:30','Đã phê duyệt',null),
 ('887a83b4-9393-4e86-a035-f53316276ba8','ff498619-dfc1-48ce-85da-63580935a0f7','Tiệc ăn hỏi','11/04/2021','16:00','20:00','Đã phê duyệt',null),
 (null,'32b5fe6e-cbf3-41f5-a334-fc3e0a1badde','Sinh nhật con trai','26/07/2021','07:30','11:00','Chờ xử lý',null),
-('887a83b4-9393-4e86-a035-f53316276ba8','32b5fe6e-cbf3-41f5-a334-fc3e0a1badde','Ăn mừng lên chức','10/07/2021','10:00','12:00','Đã hủy','Phòng tổ chức sự kiện đang nâng cấp');
+('887a83b4-9393-4e86-a035-f53316276ba8','32b5fe6e-cbf3-41f5-a334-fc3e0a1badde','Ăn mừng lên chức','10/07/2021','10:00','12:00','Đã hủy','Phòng tổ chức sự kiện đang nâng cấp'),
+('887a83b4-9393-4e86-a035-f53316276ba8','32b5fe6e-cbf3-41f5-a334-fc3e0a1badde','Họp mặt gia đình','06/05/2021','07:30','11:00','Đã phê duyệt',null);
 
 --Dữ liệu thông tin sửa chữa
 insert into repair_info(apartment_id,staff_id,date,content,rate,status)
@@ -488,7 +489,7 @@ values
 ('22031b39-9364-48b1-96d5-66607c26c4e2','edc959c2-59fd-476d-9b78-478cd9878c11','13/05/2021','Rò rỉ nước nhà vệ sinh','Hài lòng','Đã đánh giá'),
 ('32b5fe6e-cbf3-41f5-a334-fc3e0a1badde','88f400e4-b3e0-4ef9-b6a7-4f40684ca6d3','11/07/2021','Đèn trần nhà bị hư',null,'Đã xử lý'),
 ('32b5fe6e-cbf3-41f5-a334-fc3e0a1badde','ea09d3c7-494b-4de2-864e-248af53e3015','12/07/2021','Van cấp nước bị nghẹt',null,'Đã phân công'),
-('32b5fe6e-cbf3-41f5-a334-fc3e0a1badde',null,'13/07/2021','Rò rỉ nước nhà vệ sinh',null,'Chờ xử lý');
+('32b5fe6e-cbf3-41f5-a334-fc3e0a1badde',null,'25/07/2021','Rò rỉ nước nhà vệ sinh',null,'Chờ xử lý');
 
 --Dữ liệu thông tin phản ánh
 insert into reflect_info(department_id,apartment_id,date,title,content,answer,status)
