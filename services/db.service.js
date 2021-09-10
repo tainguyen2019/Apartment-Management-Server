@@ -19,7 +19,7 @@ dotenv.config();
 class DBService {
   constructor({ host, port, database, user, password, connectionString }) {
     if (connectionString) {
-      this.config = { connectionString, ssl: true };
+      this.config = { connectionString, ssl: { rejectUnauthorized: false } };
     } else {
       this.config = {
         host,
