@@ -25,7 +25,7 @@ app.use(
 );
 
 // LOGGING
-app.use(logger('dev'));
+app.use(logger('combined'));
 
 // BODY PARSER
 app.use(express.json());
