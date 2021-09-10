@@ -19,7 +19,7 @@ dotenv.config();
 class DBService {
   constructor({ host, port, database, user, password, connectionString }) {
     if (connectionString) {
-      this.pool = new Pool({ connectionString });
+      this.pool = new Pool({ connectionString, ssl: false });
     } else {
       this.pool = new Pool({
         host,
