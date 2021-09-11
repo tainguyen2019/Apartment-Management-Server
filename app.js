@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const logger = require('morgan');
+const timeout = require('connect-timeout');
 
 // ENV loader
 const dotenv = require('dotenv');
@@ -9,6 +10,7 @@ dotenv.config();
 // MIDDLEWARES
 const authMiddleware = require('./middlewares/auth.middleware');
 const errorMiddleware = require('./middlewares/error.middleware');
+const haltOnTimedout = require('./middlewares/timedout.middleware');
 
 // ROUTES
 const routes = require('./routes');
@@ -24,6 +26,9 @@ app.use(
   }),
 );
 
+// TIMEOUT
+app.use(timeout('30s'));
+
 // LOGGING
 app.use(logger('combined'));
 
@@ -33,6 +38,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // MIDDLEWARES
 app.use(authMiddleware);
+app.use(haltOnTimedout); // check if exceed 30s timeout
 
 // ROUTE HANDLERS
 app.use('/v1', routes.v1);
