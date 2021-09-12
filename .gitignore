@@ -109,4 +109,4 @@ package-lock.json
 
 .env
 sql/final-sql-script.sql
-upload/
+<!-- upload/ upload to heroku-->  
